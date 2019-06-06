@@ -1,0 +1,14 @@
+{
+    "plugins": [
+        "collapsible-menu",
+        "katex",
+        "-highlight",
+        "page-toc"
+    ],
+    "page-toc": {
+        "selector": ".markdown-section h2, .markdown-section h3, .markdown-section h4",
+        "position": "before-first",
+        "showByDefault": true
+    },
+    "showLevel": true
+}
