@@ -1,5 +1,0 @@
-{
-    "scripts": {
-        "convert": "node_modules/.bin/converter"
-    }
-}

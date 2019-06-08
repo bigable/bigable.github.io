@@ -1,73 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: default
+title: Home
+---
 
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="description" content="Description">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
-</head>
+<div class="posts">
+{% if site.posts %}
+  {% for post in site.posts %}
+ 	  {% include posts.html %}
+  {% endfor %}
+  <script src="{{ site.baseurl }}/public/js/pagination.js"></script>
+{% else %}
+  <p>There are no posts.</p>
+{% endif %}
 
-<body>
-    <div id="app"></div>
-    <script>
-        window.$docsify = {
-            loadSidebar: './_sidebar.md',
-            subMaxLevel: 3,
-            name: '',
-            repo: '',
-            auto2top: true,
-            plugins: [
-                function(hook) {
-                    hook.doneEach(function() {
-                        if (typeof MathJax !== 'undefined') {
-                            MathJax.Hub.Queue(["Typeset", MathJax.Hub])
-                        }
-                    })
-                }
-            ],
-
-            markdown: {
-                renderer: {
-                    image: function(href, title, text) {
-                        var image_html = this.origin.image.apply(this, arguments)
-                        return '<figure>' + image_html + '<figcaption>' + text.split('-c')[0] +
-                            '</figcaption></figure>'
-                    }
-                }
-            }
-        }
-    </script>
-
-    <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-
-    <!-- Code highlighting -->
-    <script src="//unpkg.com/prismjs/components/prism-python.min.js"></script>
-    <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
-
-    <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
-
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({ extensions: ["tex2jax.js"], jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true }, "HTML-CSS": { availableFonts: ["TeX"] } });
-    </script>
-
-    <script src="//cdn.bootcss.com/mathjax/2.6.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
-    <style>
-        body {
-            font-family: -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 1.7;
-        }
-        
-        figure {
-            text-align: center
-        }
-    </style>
-</body>
-
-</html>
+</div>
